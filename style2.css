@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+/* --- BASE --- */
+* { padding: 0; margin: 0; box-sizing: border-box; text-decoration: none; list-style: none; }
+body { background: #000; color: white; font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+
+/* --- NAVIGATION --- */
+nav { width: 100%; height: 10vh; border-bottom: 1px solid #222; display: flex; align-items: center; position: sticky; top: 0; background: black; z-index: 1000; }
+.nav-container { width: 100%; display: flex; justify-content: space-around; align-items: center; }
+.logo { font-size: 1.5rem; font-weight: 800; }
+.logo span { color: gold; text-shadow: 0 0 10px gold; }
+.links a { color: white; margin-left: 20px; transition: 0.3s; }
+.links a:hover { color: gold; }
+
+/* --- PAGES SYSTEM --- */
+.page { display: none; min-height: 90vh; padding: 50px 10%; align-items: center; justify-content: center; }
+.page.active { display: flex; flex-direction: column; animation: fadeIn 0.5s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* --- HOME --- */
+.main-container { display: flex; align-items: center; gap: 50px; }
+.image { width: 300px; height: 300px; border-radius: 50%; border: 4px solid gold; box-shadow: 0 0 30px gold; overflow: hidden; }
+.image img { width: 100%; height: 100%; object-fit: cover; }
+.typewriter-text { color: gold; font-weight: bold; }
+.social-links a i { font-size: 1.5rem; color: white; border: 1px solid gold; padding: 10px; border-radius: 50%; margin-right: 10px; transition: 0.3s; }
+.social-links a i:hover { background: gold; color: black; box-shadow: 0 0 15px gold; }
+
+/* --- NOS OFFRES (BARRES) --- */
+.full-model-img { width: 100%; max-width: 500px; border-radius: 15px; border: 2px solid gold; margin-bottom: 20px; }
+.price-bars { width: 100%; max-width: 500px; }
+.bar { width: 100%; height: 12px; background: #111; border-radius: 10px; margin-bottom: 15px; border: 1px solid #333; }
+.bar span { display: block; height: 100%; background: gold; box-shadow: 0 0 10px gold; }
+
+/* --- GRILLE D'ACHAT (PC & TABLETTE) --- */
+.shop-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 20px; 
+    width: 100%; 
+    padding-bottom: 50px; /* Espace pour le scroll en bas */
+}
+
+/* --- CARTE PRODUIT --- */
+.product-card { 
+    background: #0a0a0a; 
+    padding: 15px; 
+    border-radius: 15px; 
+    text-align: center; 
+    border: 1px solid #222; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.3s; 
+}
+
+.product-card img { 
+    width: 100%; 
+    height: 120px; /* Taille réduite pour mobile */
+    object-fit: contain; 
+    margin-bottom: 10px; 
+}
+
+.product-card h3 {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.order-btn { 
+    font-size: 0.8rem;
+    padding: 8px 10px;
+}
+
+/* --- MOBILE (AFFICHAGE 2 PAR 2) --- */
+@media (max-width: 600px) {
+    .page {
+        height: auto; /* Permet le scroll vertical */
+        overflow-y: visible;
+    }
+
+    .shop-grid {
+        grid-template-columns: repeat(2, 1fr); /* FORCE 2 COLONNES */
+        gap: 10px; /* Espace réduit pour que ça tienne */
+    }
+
+    .product-card {
+        padding: 10px;
+    }
+
+    .product-card img {
+        height: 100px; /* Image plus petite pour le 2x2 */
+    }
+
+    .product-card h3 {
+        font-size: 0.8rem;
+    }
+}
+
+/* Couleurs spécifiques par carte */
+.product-card.bissap:hover { border-color: #ff0000; box-shadow: 0 0 20px #ff0000; }
+.product-card.passion:hover { border-color: #f4a460; box-shadow: 0 0 20px #f4a460; }
+.product-card.tommy:hover { border-color: #5d4037; box-shadow: 0 0 20px #5d4037; }
+.product-card.citron:hover { border-color: #32cd32; box-shadow: 0 0 20px #32cd32; }
+.product-card.cocktail:hover { border-color: gold; box-shadow: 0 0 20px gold; }
+.product-card.ananas:hover { border-color: #ffff00; box-shadow: 0 0 20px #ffff00; }
+
+.order-btn { display: inline-block; margin-top: 10px; padding: 10px 20px; background: gold; color: black; font-weight: bold; border-radius: 50px; transition: 0.3s; }
+.order-btn:hover { transform: scale(1.1); box-shadow: 0 0 15px gold; }
+
+/* --- MOBILE --- */
+.hamburg { display: none; font-size: 2rem; color: gold; }
+@media (max-width: 768px) {
+    .hamburg { display: block; }
+    .links { display: none; }
+    .main-container { flex-direction: column; text-align: center; }
+}
+
+/* Dropdown Menu */
+.dropdown { position: fixed; top: -100%; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: flex; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s; z-index: 2000; }
+.dropdown.open { top: 0; }
+.dropdown a { font-size: 1.5rem; color: white; margin: 15px; }
+.cancel { position: absolute; top: 20px; right: 20px; font-size: 2rem; color: gold; }
